@@ -1,0 +1,37 @@
+% Number letter counts
+% Problem 17
+%
+% If the numbers 1 to 5 are written out in words: one, two, three, four, five,
+% then there are 3 + 3 + 5 + 4 + 4 = 19 letters used in total.
+%
+% If all the numbers from 1 to 1000 (one thousand) inclusive were written out
+% in words, how many letters would be used?
+%
+% NOTE: Do not count spaces or hyphens. For example, 342 (three hundred and
+% forty-two) contains 23 letters and 115 (one hundred and fifteen) contains 20
+% letters. The use of "and" when writing out numbers is in compliance with British usage.
+
+main =>
+    println(sum([ext(X): X in 1..1000])).
+
+ext(N)=C, N < 21   => letters(N, C).
+ext(N)=C, N < 30   => letters(20, C1), letters(N-20, C2), C = C1+C2.
+ext(N)=C, N < 40   => letters(30, C1), letters(N-30, C2), C = C1+C2.
+ext(N)=C, N < 50   => letters(40, C1), letters(N-40, C2), C = C1+C2.
+ext(N)=C, N < 60   => letters(50, C1), letters(N-50, C2), C = C1+C2.
+ext(N)=C, N < 70   => letters(60, C1), letters(N-60, C2), C = C1+C2.
+ext(N)=C, N < 80   => letters(70, C1), letters(N-70, C2), C = C1+C2.
+ext(N)=C, N < 90   => letters(80, C1), letters(N-80, C2), C = C1+C2.
+ext(N)=C, N < 100  => letters(90, C1), letters(N-90, C2), C = C1+C2.
+ext(N)=C, N < 1000 => letters(N//100,C1), (N rem 100 == 0->C1:=C1+7;C1:=C1+10),
+                      C2 = ext(N rem 100), C = C1+C2.
+ext(N)=C, N = 1000 => C = 11.
+
+index(+,-)
+letters(0, 0).      letters(1, 3).      letters(2, 3).      letters(3, 5).
+letters(4, 4).      letters(5, 4).      letters(6, 3).      letters(7, 5).
+letters(8, 5).      letters(9, 4).      letters(10, 3).     letters(11, 6).
+letters(12, 6).     letters(13, 8).     letters(14, 8).     letters(15, 7).
+letters(16, 7).     letters(17, 9).     letters(18, 8).     letters(19, 8).
+letters(20, 6).     letters(30, 6).     letters(40, 5).     letters(50, 5).
+letters(60, 5).     letters(70, 7).     letters(80, 6).     letters(90, 6).
