@@ -1,0 +1,27 @@
+% Largest prime factor
+% Problem 3
+%
+% The prime factors of 13195 are 5, 7, 13 and 29.
+%
+% What is the largest prime factor of the number 600851475143 ?
+
+main =>
+    solucao1.
+
+solucao1 =>
+    Number = 600_851_475_143,
+    Primes = Number.sqrt().to_int().primes(),
+    Last = Primes[1],
+    foreach (P in Primes, Number mod P == 0)
+        Last := P,
+    end,
+    println(Last).
+
+solucao2 =>
+    Number = 600_851_475_143,
+    foreach(P in sqrt(Number).to_int().primes())
+        if(Number mod P = 0) then
+            println([Number, P]),
+            Number := to_int(Number / P),
+        end,
+    end.
