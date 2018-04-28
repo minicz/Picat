@@ -1,2 +1,3 @@
 # picat
-My Picat Codes
+Este repositório é para armazenar os vários códigos que eu fiz em Picat.
+
